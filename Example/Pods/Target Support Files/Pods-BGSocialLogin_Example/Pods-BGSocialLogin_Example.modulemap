@@ -1,0 +1,6 @@
+module Pods_BGSocialLogin_Example {
+  umbrella header "Pods-BGSocialLogin_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

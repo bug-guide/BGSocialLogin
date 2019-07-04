@@ -1,0 +1,6 @@
+module BGSocialLogin {
+  umbrella header "BGSocialLogin-umbrella.h"
+
+  export *
+  module * { export * }
+}

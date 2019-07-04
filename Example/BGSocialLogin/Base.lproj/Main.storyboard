@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BGSocialLogin_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WXl-6f-k2L">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SocialCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SocialCell" id="jhD-Ul-lVu" customClass="SocialCell" customModule="BGSocialLogin_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jhD-Ul-lVu" id="eRp-Yn-Xrw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7Z-Zi-cGq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOP-Ku-IWR">
+                                                            <rect key="frame" x="10" y="0.0" width="394" height="79.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FOP-Ku-IWR" firstAttribute="top" secondItem="f7Z-Zi-cGq" secondAttribute="top" id="19n-m8-EE7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="FOP-Ku-IWR" secondAttribute="bottom" id="3A1-cd-rkQ"/>
+                                                        <constraint firstItem="FOP-Ku-IWR" firstAttribute="leading" secondItem="f7Z-Zi-cGq" secondAttribute="leading" constant="10" id="Yrx-qj-sMZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FOP-Ku-IWR" secondAttribute="trailing" constant="10" id="tTA-hO-2Ik"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f7Z-Zi-cGq" firstAttribute="top" secondItem="eRp-Yn-Xrw" secondAttribute="top" id="APG-3Y-y3P"/>
+                                                <constraint firstAttribute="bottom" secondItem="f7Z-Zi-cGq" secondAttribute="bottom" id="O2E-8c-THv"/>
+                                                <constraint firstItem="f7Z-Zi-cGq" firstAttribute="leading" secondItem="eRp-Yn-Xrw" secondAttribute="leading" id="dbo-Hf-Zwy"/>
+                                                <constraint firstAttribute="trailing" secondItem="f7Z-Zi-cGq" secondAttribute="trailing" id="vrM-TQ-S2s"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lbTitle" destination="FOP-Ku-IWR" id="7l8-AR-FzT"/>
+                                            <outlet property="vWrapper" destination="f7Z-Zi-cGq" id="yhg-Tc-FLm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WXl-6f-k2L" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="41r-Xr-j4P"/>
+                            <constraint firstAttribute="trailing" secondItem="WXl-6f-k2L" secondAttribute="trailing" id="C1V-Gy-YMq"/>
+                            <constraint firstItem="WXl-6f-k2L" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="HAa-SA-P1o"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WXl-6f-k2L" secondAttribute="bottom" id="Z5f-js-zS4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="WXl-6f-k2L" id="IxG-ae-dkt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
+        </scene>
+    </scenes>
+</document>
