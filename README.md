@@ -95,8 +95,6 @@ public enum BGSocial: String {
 
 #### Use Kakao Social Login
 
-준비사항
-
 - Project Info.plist 에 **KAKAO_APP_KEY = 발급받은 api_key** 를 셋팅한다.
 
 - Project Info.plist 에 아래와같은 **LSApplicationQueriesSchemes 를 추가**한다.
