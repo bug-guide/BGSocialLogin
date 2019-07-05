@@ -65,17 +65,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ol3-0y-8wx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GHM-eO-Shv">
+                                        <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="GHM-eO-Shv" firstAttribute="centerY" secondItem="Ol3-0y-8wx" secondAttribute="centerY" id="LFM-tp-C3H"/>
+                                    <constraint firstItem="GHM-eO-Shv" firstAttribute="centerX" secondItem="Ol3-0y-8wx" secondAttribute="centerX" id="aTe-wT-0vL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WXl-6f-k2L" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="41r-Xr-j4P"/>
                             <constraint firstAttribute="trailing" secondItem="WXl-6f-k2L" secondAttribute="trailing" id="C1V-Gy-YMq"/>
                             <constraint firstItem="WXl-6f-k2L" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="HAa-SA-P1o"/>
+                            <constraint firstItem="Ol3-0y-8wx" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ShO-gJ-8wa"/>
+                            <constraint firstAttribute="trailing" secondItem="Ol3-0y-8wx" secondAttribute="trailing" id="W09-yJ-o9w"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WXl-6f-k2L" secondAttribute="bottom" id="Z5f-js-zS4"/>
+                            <constraint firstItem="Ol3-0y-8wx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="dQa-BJ-7cA"/>
+                            <constraint firstAttribute="bottom" secondItem="Ol3-0y-8wx" secondAttribute="bottom" id="km8-UZ-rHU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="GHM-eO-Shv" id="fQ4-QJ-C1B"/>
                         <outlet property="tableView" destination="WXl-6f-k2L" id="IxG-ae-dkt"/>
+                        <outlet property="vIndicator" destination="Ol3-0y-8wx" id="hwK-gL-sju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -51,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else if BGLoginModel.setAppDelegateGoogleCallback(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:]) {
             return true
         }
-        
-        
         return false
     }
     

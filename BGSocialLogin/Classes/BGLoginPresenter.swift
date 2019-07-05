@@ -33,6 +33,19 @@ public class BGLoginPresenter: NSObject {
                 self.view?.responseSosialLogin(loginUser)
             }
         }
+        
+        self.model.loginStatusHandle = { status, social in
+            //print("\(status), \(social)")
+            DispatchQueue.main.async {
+                if status == .start {
+                    self.view?.startLoading(social)
+                } else if status == .end {
+                    self.view?.endLoading(social)
+                } else {
+                    self.view?.failLoading(social)
+                }
+            }
+        }
     }
 }
 

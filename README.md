@@ -18,13 +18,13 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Dependency
 
-- 'SnapKit', '5.0.0' *#auto layout support*
-- 'naveridlogin-sdk-ios', '4.0.12' *#naver sdk*
-- 'FBSDKLoginKit', '5.1.1' *#faceBook sdk*
-- 'Alamofire', '4.8.2' *#network*
-- 'Firebase/Auth', '6.3.0' #google
-- 'GoogleSignIn', '4.4.0' #google
-- 'KakaoOpenSDK', '1.12.1' #kakao
+- 'SnapKit', '5.0.0' 
+- 'naveridlogin-sdk-ios', '4.0.12'
+- 'FBSDKLoginKit', '5.1.1' 
+- 'Alamofire', '4.8.2' 
+- 'Firebase/Auth', '6.3.0'
+- 'GoogleSignIn', '4.4.0' 
+- 'KakaoOpenSDK', '1.12.1' 
   - 비공식으로 나온 Cocoapod SDK. pod 'KakaoOpenSDK'
 
 
@@ -40,11 +40,17 @@ pod 'BGSocialLogin'
 
 
 
-## Use
+## How To Use
 
 적용된 모든 소셜 플랫폼은 미리 만들어둔 뷰를 지정해주면 해당 뷰 안으로 소셜로그인이 사용하는 버튼을 add한다. 로그인 이벤트가 동작한 이후엔 1차적으로 모듈이 가공하여 BGSocialLoginUser 라는 형태로 반환된다.
 
 각 로그인이 동작하기 위해서 필요한 기본적 프로잭트 셋팅은 아래와 같이 수동으로 설정해야하며, 자세한 내용은 각 플랫폼의 개발자 가이드에 따른다.
+
+
+
+---
+
+
 
 #### Base Response
 
@@ -90,6 +96,12 @@ public enum BGSocial: String {
     case google = "Google"
 }
 ```
+
+
+
+
+
+---
 
 
 
@@ -159,10 +171,16 @@ public enum BGSocial: String {
   }
   ```
 
-  
+
+
+
+---
+
+
 
 #### Use Google Social Login
 
+- FireBase.com -> 프로잭트 -> Setting -> 내 앱
 
 
 

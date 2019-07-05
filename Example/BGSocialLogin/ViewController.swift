@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     var socials:[BGSocial] = [BGSocial.kakao, BGSocial.naver, BGSocial.google]
     var presenter = BGLoginPresenter.init(model: BGLoginModel())
     
+    @IBOutlet weak var vIndicator: UIView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -31,6 +34,8 @@ class ViewController: UIViewController {
         //TestCall().TestLog("testCall")
         presenter.attachView(view: self)
         tableView.reloadData()
+        
+        vIndicator.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +58,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ViewController: BGLoginContract_View {
+    func startLoading(_ sosial: BGSocial) {
+        vIndicator.isHidden = false
+        indicator.startAnimating()
+    }
+    
+    func endLoading(_ sosial: BGSocial) {
+        vIndicator.isHidden = true
+        indicator.stopAnimating()
+    }
+    
+    func failLoading(_ sosial: BGSocial) {
+        vIndicator.isHidden = true
+        indicator.stopAnimating()
+    }
+    
     func responseSosialLogin(_ loginUser: BGSocialLoginUser) {
         let message = "loginUser : \(loginUser)"
         Toast.init(text: message).show()

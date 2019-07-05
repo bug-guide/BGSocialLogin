@@ -18,7 +18,18 @@ public struct BGSocialLoginUser {
     public var error:Error?
 }
 
+public enum BGSocialLoginStatus {
+    case start
+    case end
+    case fail
+}
+
 public protocol BGLoginContract_View {
+    
+    func startLoading(_ sosial:BGSocial)
+    func endLoading(_ sosial:BGSocial)
+    func failLoading(_ sosial:BGSocial)
+    
     /**
      소셜 로그인이 진행하고 결과를 반환한다.
      - Parameters:

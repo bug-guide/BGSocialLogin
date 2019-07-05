@@ -33,7 +33,7 @@ public class BGLoginModel: BGBaseModel {
      - error : 로그인이 실패할경우 에러를 반환한다.
      */
     var loginCompleteHandle:((_ loginUser:BGSocialLoginUser)->Void)?
-    
+    var loginStatusHandle:((_ status:BGSocialLoginStatus, _ sosial:BGSocial)->Void)?
 }
 
 // MARK: - kakao
@@ -121,6 +121,11 @@ extension BGLoginModel {
     }
     
     @objc func invokeLoginWithTarget() {
+        
+        if let loginStatusHandle = loginStatusHandle {
+            loginStatusHandle(.start, .kakao)
+        }
+        
         if let session = KOSession.shared() {
             //기존 세션을 닫고 재시도.
             session.close()
@@ -131,6 +136,10 @@ extension BGLoginModel {
                     self.getKakaoUserInfo(token: session.token.accessToken)
                 } else {
                     print("kakao invokeLoginWithTarget false \(String(describing: error))")
+                    if let loginStatusHandle = self.loginStatusHandle {
+                        loginStatusHandle(.fail, .kakao)
+                    }
+                    
                     if let loginCompleteHandle = self.loginCompleteHandle {
                         var loginUser = BGSocialLoginUser.init()
                         loginUser.sosial = .kakao
@@ -142,6 +151,9 @@ extension BGLoginModel {
             
         } else {
             print("kakao invokeLoginWithTarget lose")
+            if let loginStatusHandle = self.loginStatusHandle {
+                loginStatusHandle(.fail, .kakao)
+            }
             
             let error = NSError(domain:"", code:999, userInfo:nil)
             if let loginCompleteHandle = self.loginCompleteHandle {
@@ -168,6 +180,10 @@ extension BGLoginModel {
             //self.indicatorView.hideIndicator()
             
             if error != nil {
+                if let loginStatusHandle = self.loginStatusHandle {
+                    loginStatusHandle(.fail, .kakao)
+                }
+                
                 print("kakao userMeTask error \(String(describing: error))")
                 let error = NSError(domain:"", code:999, userInfo:nil)
                 if let loginCompleteHandle = self.loginCompleteHandle {
@@ -188,6 +204,10 @@ extension BGLoginModel {
                         if let email = account.email {
                             //획득성공.
                             print("kakao email \(email)")
+                            if let loginStatusHandle = self.loginStatusHandle {
+                                loginStatusHandle(.end, .kakao)
+                            }
+                            
                             if let loginCompleteHandle = self.loginCompleteHandle {
                                 var loginUser = BGSocialLoginUser.init()
                                 loginUser.sosial = .kakao
@@ -203,6 +223,10 @@ extension BGLoginModel {
                                 if error != nil {
                                     //유저가 이메일 획득동의를 하지 않았다.
                                     print("유저가 이메일 획득동의를 하지 않았다.")
+                                    if let loginStatusHandle = self.loginStatusHandle {
+                                        loginStatusHandle(.fail, .kakao)
+                                    }
+                                    
                                     let error = NSError(domain:"유저가 이메일 획득동의를 하지 않았다.", code:999, userInfo:nil)
                                     if let loginCompleteHandle = self.loginCompleteHandle {
                                         var loginUser = BGSocialLoginUser.init()
@@ -220,6 +244,10 @@ extension BGLoginModel {
                         } else {
                             //유저가 이메일을 쓰고있지 않다.(아마도.)
                             print("유저가 이메일을 쓰고있지 않다")
+                            if let loginStatusHandle = self.loginStatusHandle {
+                                loginStatusHandle(.fail, .kakao)
+                            }
+                            
                             let error = NSError(domain:"유저가 이메일을 쓰고있지 않다", code:999, userInfo:nil)
                             if let loginCompleteHandle = self.loginCompleteHandle {
                                 var loginUser = BGSocialLoginUser.init()
@@ -564,7 +592,7 @@ extension BGLoginModel: LoginButtonDelegate {
     }
 }
 
-///google
+// MARK: - Google
 extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {
     
 
@@ -620,10 +648,16 @@ extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {
     
     public func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
         print("signIn inWillDispatch")
+        if let loginStatusHandle = self.loginStatusHandle {
+            loginStatusHandle(.start, .google)
+        }
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
+            if let loginStatusHandle = self.loginStatusHandle {
+                loginStatusHandle(.fail, .google)
+            }
             // 로그인 에러 발생.
             if let loginCompleteHandle = self.loginCompleteHandle {
                 var loginUser = BGSocialLoginUser.init()
@@ -656,6 +690,10 @@ extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {
                 loginUser.imageUrlStr = ""
             }
             
+            if let loginStatusHandle = self.loginStatusHandle {
+                loginStatusHandle(.end, .google)
+            }
+            
             if let loginCompleteHandle = self.loginCompleteHandle {
                 loginCompleteHandle(loginUser)
             }
@@ -664,6 +702,10 @@ extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {
             print("구글로그인 실패. accesstoken 없음.")
             //self.showWarningDoneAlert("구글로그인에 실패했습니다. 관리자에게 문의해주세요.")
             GIDSignIn.sharedInstance().signOut()
+            
+            if let loginStatusHandle = self.loginStatusHandle {
+                loginStatusHandle(.fail, .google)
+            }
             
             if let loginCompleteHandle = self.loginCompleteHandle {
                 var loginUser = BGSocialLoginUser.init()
@@ -676,6 +718,10 @@ extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {
     }
     
     public func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        if let loginStatusHandle = self.loginStatusHandle {
+            loginStatusHandle(.fail, .google)
+        }
+        
         if let loginCompleteHandle = self.loginCompleteHandle {
             var loginUser = BGSocialLoginUser.init()
             loginUser.sosial = .google
