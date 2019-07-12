@@ -212,6 +212,8 @@ extension BGLoginModel {
                                 var loginUser = BGSocialLoginUser.init()
                                 loginUser.sosial = .kakao
                                 loginUser.email = email
+                                loginUser.token = token
+                                loginUser.imageUrlStr = me.thumbnailImageURL?.absoluteString ?? ""
                                 loginCompleteHandle(loginUser)
                             }
                             return
