@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BGSocialLogin'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = '한국에서 사용하는 소셜로그인 집합'
 
 # This description is used to generate tags and improve search results.
