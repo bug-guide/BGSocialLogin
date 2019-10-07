@@ -47,7 +47,7 @@ public protocol BGLoginContract_Presenter {
     func addKakaoLoginButton(wrapperView:UIView)
     func addNaverLoginButton(wrapperView:UIView)
     func addGoogleLoginButton(wrapperView:UIView, clientId:String)
-    func addFacebookLoginButton(wrapperView:UIView, superViewController:UIViewController)
+    //func addFacebookLoginButton(wrapperView:UIView, superViewController:UIViewController)
 }
 
 public class BGLoginContract: NSObject {

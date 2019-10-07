@@ -11,9 +11,6 @@ import UIKit
 import KakaoOpenSDK
 ///naver
 import NaverThirdPartyLogin
-///facebook
-import FBSDKCoreKit
-import FBSDKLoginKit
 
 import SnapKit
 import Alamofire
@@ -400,6 +397,7 @@ extension BGLoginModel: NaverThirdPartyLoginConnectionDelegate {
 }
 
 // MARK: - facebook
+/*
 extension BGLoginModel: LoginButtonDelegate {
     
     static func setAppDelegateFacebookLogin(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
@@ -593,6 +591,7 @@ extension BGLoginModel: LoginButtonDelegate {
          */
     }
 }
+*/
 
 // MARK: - Google
 extension BGLoginModel: GIDSignInUIDelegate, GIDSignInDelegate  {

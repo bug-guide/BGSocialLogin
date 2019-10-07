@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BGSocialLogin'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = '한국에서 사용하는 소셜로그인 집합'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://gitlab.com/wisewood/bgsociallogin.git'
+  s.homepage         = 'https://github.com/bug-guide/BGSocialLogin.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'bugguide@gmail.com' => 'bugguide@gmail.com' }
@@ -43,8 +43,8 @@ TODO: Add long description of the pod here.
 
   s.dependency 'SnapKit', '5.0.0' #auto layout support
   s.dependency 'naveridlogin-sdk-ios', '4.0.12' #naver sdk
-  s.dependency 'FBSDKLoginKit', '5.1.1' #faceBook sdk
   s.dependency 'Alamofire', '4.8.2' #network
+  # s.dependency 'FBSDKLoginKit', '5.1.1' #faceBook sdk
   s.dependency 'Firebase/Auth', '6.3.0'
   s.dependency 'GoogleSignIn', '4.4.0'
   s.dependency 'KakaoOpenSDK', '1.12.1'

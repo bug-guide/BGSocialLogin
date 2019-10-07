@@ -64,8 +64,10 @@ extension BGLoginPresenter: BGLoginContract_Presenter {
         model.addGoogleLoginButton(wrapperView: wrapperView, clientId: clientId)
     }
     
+    /*
     public func addFacebookLoginButton(wrapperView:UIView, superViewController:UIViewController) {
         model.addFacebookLoginButton(wrapperView: wrapperView, superViewController: superViewController)
     }
+     */
 }
 
